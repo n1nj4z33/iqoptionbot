@@ -3,7 +3,7 @@
 
 import time
 
-from iqpy.signaler.patterns.base import Base
+from signaler.patterns.base import Base
 
 
 class TBH(Base):
@@ -13,13 +13,13 @@ class TBH(Base):
         self.name = "TBH"
 
     def call(self):
-        if self.api.websocket.timesync.server_datetime.second == 0:
+        if self.api.timesync.server_datetime.second == 0:
             
-            self.api.candles(76, 60)
+            self.api.getcandles(76, 60)
 
             time.sleep(0.5)
 
-            candles = self.api.websocket.candles
+            candles = self.api.candles
 
             if candles.first_candle.candle_high == candles.second_candle.candle_high:
 
@@ -27,13 +27,13 @@ class TBH(Base):
                     return True
 
     def put(self):
-        if self.api.websocket.timesync.server_datetime.second == 0:
+        if self.api.timesync.server_datetime.second == 0:
             
-            self.api.candles(76, 60)
+            self.api.getcandles(76, 60)
 
             time.sleep(0.5)
 
-            candles = self.api.websocket.candles
+            candles = self.api.candles
 
             if candles.first_candle.candle_high == candles.second_candle.candle_high:
 

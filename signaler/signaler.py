@@ -2,8 +2,8 @@
 """Module for IQ Option API signaler."""
 import logging
 
-import iqpy.iqapi.constants as api_constants
-from iqpy.signaler.signal import Signal
+import iqapi.constants as api_constants
+from signal import Signal
 
 
 class Signaler(object):
