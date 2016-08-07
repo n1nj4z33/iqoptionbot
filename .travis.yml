@@ -9,3 +9,4 @@ install:
 
 script:
     - "pylint iqoption_bot --rcfile=./pylint.rc"
+    - "python setup.py install"

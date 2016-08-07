@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-"""Module for IQ Option bot."""
+"""The IQ Option trade system package."""
