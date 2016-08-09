@@ -19,7 +19,7 @@ class Starter(object):
     """Calss for IQ Option API starter."""
 
     def __init__(self):
-        self.api = IQOptionAPI("iqoption.com", "n1nj4z33@gmail.com", "LTh2e9m26xd4")
+        self.api = IQOptionAPI("iqoption.com", "username", "password")
 
     def create_connection(self):
         """Method for create connection to IQ Option API."""
