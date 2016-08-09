@@ -1,6 +1,6 @@
 *.py[cod]
-/logs
 *.log
+/logs
 /build
 /dist
 /*.egg-info
