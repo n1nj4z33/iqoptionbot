@@ -2,31 +2,37 @@
 """Module for IQ Option API starter."""
 
 import os
+import argparse
 import logging
 
-from iqapi.api import IQOptionAPI
-from signaler.signaler import create_signaler
-from signaler.patterns.pinocchio import Pinocchio
-from signaler.patterns.dblhc import DBLHC
-from signaler.patterns.dbhlc import DBHLC
-from signaler.patterns.tbh import TBH
-from signaler.patterns.tbl import TBL
+from iqbot.config import parse_config
 
-from trader.trader import create_trader
+from iqapi.api import IQOptionAPI
+
+from iqbot.signaler import create_signaler
+from iqbot.trader import create_trader
 
 
 class Starter(object):
     """Calss for IQ Option API starter."""
 
-    def __init__(self):
-        self.api = IQOptionAPI("iqoption.com", "n1nj4z33@gmail.com", "LTh2e9m26xd4")
+    def __init__(self, config):
+        """
+        :param config: The instance of :class:`Settings
+            <iqpy.settings.settigns.Settings>`.
+        """
+        self.config = config
+        self.api = IQOptionAPI(
+            self.config.get_connection_hostname(),
+            self.config.get_connection_username(),
+            self.config.get_connection_password()
+            )
 
     def create_connection(self):
         """Method for create connection to IQ Option API."""
         logger = logging.getLogger(__name__)
         logger.info("Create connection.")
         self.api.connect()
-        print self.api.tocken
         logger.info("Successfully connected.")
 
     def start_signalers(self, actives):
@@ -34,12 +40,11 @@ class Starter(object):
         logger = logging.getLogger(__name__)
         logger.info("Create signalers.")
         signalers = []
+        actives = self.config.get_trade_actives()
+        patterns = self.config.get_trade_patterns()
         for active in actives:
             signaler = create_signaler(self.api, active)
-            signaler.set_patterns([DBLHC(self.api),
-                                   DBHLC(self.api),
-                                   TBH(self.api),
-                                   TBL(self.api)])
+            signaler.set_patterns(patterns)
             signaler.start()
             signalers.append(signaler)
         return signalers
@@ -49,6 +54,7 @@ class Starter(object):
         logger = logging.getLogger(__name__)
         logger.info("Create traders.")
         traders = []
+        actives = self.config.get_trade_actives()
         for active in actives:
             trader = create_trader(self.api, active)
             trader.start()
@@ -88,6 +94,7 @@ def _prepare_logging():
     api_logger.addHandler(api_file_handler)
 
     signaler_logger = logging.getLogger("signaler")
+    signaler_logger.setLevel(logging.INFO)
 
     signaler_file_handler = logging.FileHandler(os.path.join(logs_folder, "signaler.log"))
     signaler_file_handler.setLevel(logging.DEBUG)
@@ -97,6 +104,7 @@ def _prepare_logging():
     signaler_logger.addHandler(signaler_file_handler)
 
     trader_logger = logging.getLogger("trader")
+    trader_logger.setLevel(logging.INFO)
 
     trader_file_handler = logging.FileHandler(os.path.join(logs_folder, "trader.log"))
     trader_file_handler.setLevel(logging.DEBUG)
@@ -114,17 +122,24 @@ def _prepare_logging():
     websocket_logger.addHandler(console_handler)
     websocket_logger.addHandler(websocket_file_handler)
 
-    # websocket_logger.addHandler(logging.NullHandler())
 
+def _create_starter(config):
+    """Create IQ Option API starter.
 
-def _create_starter():
-    """Create IQ Option API starter."""
-    return Starter()
+    :param config: The instance of :class:`ConfigurationSettings
+        <iqpy.configuration.settigns.ConfigurationSettings>`.
+
+    :returns: Instance of :class:`Starter <iqpy.starter.Starter>`.
+    """
+    return Starter(config)
+
 
 def start():
     """Main method for start."""
     _prepare_logging()
-    starter = _create_starter()
+    args = _parse_args()
+    config = parse_config(args.config_path)
+    starter = _create_starter(config)
     starter.create_connection()
     signalers = starter.start_signalers(["EURUSD-OTC"])
     traders = starter.start_traders(["EURUSD-OTC"])
@@ -140,5 +155,19 @@ def start():
                         trader.trade(signal)
 
 
-if __name__ == '__main__':
+def _parse_args():
+    """
+    Parse commandline arguments.
+
+    :returns: Instance of :class:`argparse.Namespace`.
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-c", "--config_path", dest="config_path", type=str, required=True,
+        help="Path to new configuration file."
+        )
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
     start()

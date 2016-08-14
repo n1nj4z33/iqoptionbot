@@ -2,6 +2,7 @@
 """Module for IQ Option API trader."""
 
 import logging
+import iqapi.constants as api_constants
 
 
 class Trader(object):
@@ -26,7 +27,11 @@ class Trader(object):
         logger = logging.getLogger(__name__)
         logger.info("Trader for active '%s' recived signal '%s'.", self.active, signal.direction)
 
-        self.api.buy(signal)
+        self.api.buy(
+            signal.price,
+            api_constants.ACTIVES[self.active],
+            signal.option,
+            signal.direction)
 
         logger.info("Trader for active '%s' successfully buy in direction '%s'.",
                     self.active, signal.direction)

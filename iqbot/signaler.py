@@ -3,7 +3,8 @@
 import logging
 
 import iqapi.constants as api_constants
-from signal import Signal
+import iqbot.patterns.constants as pattern_constants
+from iqbot.signal import Signal
 
 
 class Signaler(object):
@@ -12,7 +13,7 @@ class Signaler(object):
     def __init__(self, api, active):
         self.api = api
         self.active = active
-        self.patterns = None
+        self.patterns = []
 
     def start(self):
         """Method for start trading."""
@@ -21,7 +22,7 @@ class Signaler(object):
         self.api.setactives([api_constants.ACTIVES[self.active]])
 
         logger.info("Signaler for active '%s' started.", self.active)
-        logger = logging.getLogger(__name__)
+
         for pattern in self.patterns:
             logger.info("Signaler for active '%s' wait for pattern '%s'.",
                         self.active, pattern.name)
@@ -31,8 +32,8 @@ class Signaler(object):
 
         :param patterns: The list of patters to wait signal.
         """
-        self.patterns = patterns
-
+        for pattern in patterns:
+            self.patterns.append(pattern_constants.PATTERNS[pattern](self.api))
 
     def get_signal(self):
         """Get signal from patterns.
