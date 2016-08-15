@@ -5,10 +5,8 @@ import os
 import argparse
 import logging
 
-from iqbot.config import parse_config
-
 from iqapi.api import IQOptionAPI
-
+from iqbot.config import parse_config
 from iqbot.signaler import create_signaler
 from iqbot.trader import create_trader
 
