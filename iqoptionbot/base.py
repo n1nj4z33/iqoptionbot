@@ -1,7 +1,5 @@
-# -*- coding: utf-8 -*-
 """Module for base configuration."""
-
-from iqbot.settings import Settings
+from iqoptionbot.settings import Settings
 
 
 class BaseScenario(object):

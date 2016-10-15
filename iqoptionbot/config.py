@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
 """Module to work with execution configuration file."""
-
 import logging
 import argparse
 
-from iqbot.settings import Settings
-from iqbot.default import DefaultScenario
+from iqoptionbot.settings import Settings
+from iqoptionbot.default import DefaultScenario
 
 
 def create_config(config_path):

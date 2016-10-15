@@ -1,3 +1,2 @@
 pylint
-requests
-websocket-client
+iqoptionapi

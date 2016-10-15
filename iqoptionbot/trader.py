@@ -1,12 +1,11 @@
-# -*- coding: utf-8 -*-
 """Module for IQ Option API trader."""
 
 import logging
-import iqapi.constants as api_constants
+import iqoptionapi.constants as api_constants
 
 
 class Trader(object):
-    """Calss for  IQ Option API trader."""
+    """Calss for IQ Option API trader."""
 
     def __init__(self, api, active):
         self.api = api

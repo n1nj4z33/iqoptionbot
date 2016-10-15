@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 """Module for IQ Option API pinocchio bars pattern."""
-
 from .base import Base
 
 
@@ -10,7 +8,7 @@ class Pinocchio(Base):
     def __init__(self, api):
         """
         :param api: The instance of
-            :class:`IQOptionAPI <iqapi.api.IQOptionAPI>`.
+            :class:`IQOptionAPI <iqoptionapi.api.IQOptionAPI>`.
         """
         super(Pinocchio, self).__init__(api)
         self.name = "Pinocchio"

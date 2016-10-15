@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Module for IQ Option API DBHLC pattern."""
 
 from .base import Base
@@ -11,10 +10,10 @@ class DBHLC(Base):
     def __init__(self, api):
         """
         :param api: The instance of
-            :class:`IQOptionAPI <iqapi.api.IQOptionAPI>`.
+            :class:`IQOptionAPI <iqoptionapi.api.IQOptionAPI>`.
         """
         super(DBHLC, self).__init__(api)
-        self.name = "DBHLC (Медвежий сетап)"
+        self.name = "DBHLC"
 
     def put(self):
         """Method to check put pattern."""

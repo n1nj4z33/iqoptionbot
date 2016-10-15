@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Module for IQ Option API TEST pattern."""
 
 from .base import Base
@@ -10,7 +9,7 @@ class TEST(Base):
     def __init__(self, api):
         """
         :param api: The instance of
-            :class:`IQOptionAPI <iqapi.api.IQOptionAPI>`.
+            :class:`IQOptionAPI <iqoptionapi.api.IQOptionAPI>`.
         """
         super(TEST, self).__init__(api)
         self.name = "TEST"

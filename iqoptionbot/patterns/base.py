@@ -1,6 +1,4 @@
-# -*- coding: utf-8 -*-
 """Module for IQ Option API base pattern."""
-
 import time
 
 
@@ -10,7 +8,7 @@ class Base(object):
     def __init__(self, api):
         """
         :param api: The instance of
-            :class:`IQOptionAPI <iqapi.api.IQOptionAPI>`.
+            :class:`IQOptionAPI <iqoptionapi.api.IQOptionAPI>`.
         """
         self.api = api
 

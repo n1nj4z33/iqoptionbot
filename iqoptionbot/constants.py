@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Module with constants for configuration."""
 
 CONNECTION_SETTINGS_KEY = "connection_settings"

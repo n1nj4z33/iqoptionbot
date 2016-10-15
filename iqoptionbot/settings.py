@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 """Module for configuration settings."""
-
 import json
 import logging
 
-import iqbot.constants as config_constants
+import iqoptionbot.constants as config_constants
 
 
 class Settings(object):

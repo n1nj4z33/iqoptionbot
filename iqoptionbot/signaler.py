@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 """Module for IQ Option API signaler."""
 import logging
 
-import iqapi.constants as api_constants
-import iqbot.patterns.constants as pattern_constants
-from iqbot.signal import Signal
+import iqoptionapi.constants as api_constants
+import iqoptionbot.patterns.constants as pattern_constants
+from iqoptionbot.signal import Signal
 
 
 class Signaler(object):
-    """Calss for  IQ Option API signaler."""
+    """Calss for IQ Option API signaler."""
 
     def __init__(self, api, active):
         self.api = api

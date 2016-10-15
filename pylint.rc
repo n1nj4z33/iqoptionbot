@@ -1,6 +1,5 @@
-[TYPECHECK]
-# disable 'no-member' error for modules
-# ignored-classes = websocket
+[MASTER]
+disable=locally-disabled, duplicate-code
 
 [DESIGN]
 min-public-methods=0

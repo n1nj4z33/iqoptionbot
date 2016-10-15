@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
 """Module for default scenario configuration."""
-
-from iqbot.base import BaseScenario
+from iqoptionbot.base import BaseScenario
 
 
 class DefaultScenario(BaseScenario):
     """Class to prepare default configuration."""
     # pylint: disable=too-few-public-methods
 
-    def __init__(self):
-        super(DefaultScenario, self).__init__()
+    # def __init__(self):
+    #     super(DefaultScenario, self).__init__()
 
     def _prepare_connection_settings(self):
         """Prepare connection settings configuration section."""

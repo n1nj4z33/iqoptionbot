@@ -1,14 +1,13 @@
-# -*- coding: utf-8 -*-
 """Module for IQ Option API starter."""
 
 import os
 import argparse
 import logging
 
-from iqapi.api import IQOptionAPI
-from iqbot.config import parse_config
-from iqbot.signaler import create_signaler
-from iqbot.trader import create_trader
+from iqoptionapi.api import IQOptionAPI
+from iqoptionbot.config import parse_config
+from iqoptionbot.signaler import create_signaler
+from iqoptionbot.trader import create_trader
 
 
 class Starter(object):
@@ -17,7 +16,7 @@ class Starter(object):
     def __init__(self, config):
         """
         :param config: The instance of :class:`Settings
-            <iqpy.settings.settigns.Settings>`.
+            <iqoptionpy.settings.settigns.Settings>`.
         """
         self.config = config
         self.api = IQOptionAPI(
@@ -82,7 +81,7 @@ def _prepare_logging():
     starter_logger.addHandler(console_handler)
     starter_logger.addHandler(starter_file_handler)
 
-    api_logger = logging.getLogger("iqapi")
+    api_logger = logging.getLogger("iqoptionapi")
 
     api_file_handler = logging.FileHandler(os.path.join(logs_folder, "iqapi.log"))
     api_file_handler.setLevel(logging.DEBUG)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Module for IQ Option API TBL pattern."""
 
 from .base import Base
@@ -10,7 +9,7 @@ class TBL(Base):
     def __init__(self, api):
         """
         :param api: The instance of
-            :class:`IQOptionAPI <iqapi.api.IQOptionAPI>`.
+            :class:`IQOptionAPI <iqoptionapi.api.IQOptionAPI>`.
         """
         super(TBL, self).__init__(api)
         self.name = "TBL"
