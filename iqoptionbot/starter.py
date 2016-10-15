@@ -5,9 +5,9 @@ import argparse
 import logging
 
 from iqoptionapi.api import IQOptionAPI
-from iqoptionbot.config import parse_config
-from iqoptionbot.signaler import create_signaler
-from iqoptionbot.trader import create_trader
+from config import parse_config
+from signaler import create_signaler
+from trader import create_trader
 
 
 class Starter(object):

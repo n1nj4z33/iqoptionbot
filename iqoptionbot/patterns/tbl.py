@@ -1,6 +1,6 @@
 """Module for IQ Option API TBL pattern."""
 
-from .base import Base
+from base import Base
 
 
 class TBL(Base):

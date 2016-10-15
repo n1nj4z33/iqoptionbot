@@ -1,5 +1,5 @@
 """Module for IQ Option API pinocchio bars pattern."""
-from .base import Base
+from base import Base
 
 
 class Pinocchio(Base):

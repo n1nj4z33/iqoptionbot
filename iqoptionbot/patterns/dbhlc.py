@@ -1,6 +1,6 @@
 """Module for IQ Option API DBHLC pattern."""
 
-from .base import Base
+from base import Base
 
 
 class DBHLC(Base):

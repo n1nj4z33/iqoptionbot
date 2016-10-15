@@ -1,10 +1,10 @@
 """Module for IQ Option API trade pattern constants."""
 
-from iqoptionbot.patterns.test import TEST
-from iqoptionbot.patterns.dblhc import DBLHC
-from iqoptionbot.patterns.dbhlc import DBHLC
-from iqoptionbot.patterns.tbh import TBH
-from iqoptionbot.patterns.tbl import TBL
+from test import TEST
+from dblhc import DBLHC
+from dbhlc import DBHLC
+from tbh import TBH
+from tbl import TBL
 
 
 PATTERNS = {

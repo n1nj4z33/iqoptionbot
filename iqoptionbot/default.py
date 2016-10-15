@@ -1,5 +1,5 @@
 """Module for default scenario configuration."""
-from iqoptionbot.base import BaseScenario
+from base import BaseScenario
 
 
 class DefaultScenario(BaseScenario):

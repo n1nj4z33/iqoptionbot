@@ -2,8 +2,8 @@
 import logging
 import argparse
 
-from iqoptionbot.settings import Settings
-from iqoptionbot.default import DefaultScenario
+from settings import Settings
+from default import DefaultScenario
 
 
 def create_config(config_path):

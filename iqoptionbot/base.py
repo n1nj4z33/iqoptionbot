@@ -1,5 +1,5 @@
 """Module for base configuration."""
-from iqoptionbot.settings import Settings
+from settings import Settings
 
 
 class BaseScenario(object):
